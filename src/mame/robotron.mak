@@ -37,6 +37,8 @@ CPUS += M6800
 CPUS += M6809
 CPUS += M680X0
 
+MACHINES += 6821PIA
+
 #-------------------------------------------------
 # Specify all the sound cores necessary for the
 # drivers referenced in tiny.c.
@@ -57,6 +59,7 @@ SOUNDS += HC55516
 # for building all of the drivers referenced
 # in tiny.c
 #-------------------------------------------------
+BUSES += CENTRONICS
 
 DRVLIBS = \
 	$(MACHINE)/ticket.o \

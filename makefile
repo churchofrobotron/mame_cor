@@ -31,7 +31,7 @@ ifndef SUBTARGET
 SUBTARGET = $(TARGET)
 endif
 
-#SUBTARGET=robotron
+SUBTARGET=robotron
 
 #-------------------------------------------------
 # specify OSD layer: windows, sdl, etc.
