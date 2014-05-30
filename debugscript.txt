@@ -1,4 +1,4 @@
-mcor_init
+mcor_init 10.0.150.187, 10.0.150.255
 mcor_send "GameBoot"
 bp 276c,1,{mcor_send "GameStart"; g}
 wp bded,1,w,1,{mcor_send "WaveNum:%x",b@bded; g}

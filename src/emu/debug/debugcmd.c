@@ -405,7 +405,7 @@ void debug_command_init(running_machine &machine)
 	debug_console_register_command(machine, "dumpkbd",   CMDFLAG_NONE, 0, 0, 1, execute_dumpkbd);
 
 	// mcor
-	debug_console_register_command(machine, "mcor_init",  CMDFLAG_NONE, 0, 0, 1, execute_mcor_init);
+	debug_console_register_command(machine, "mcor_init",  CMDFLAG_NONE, 0, 2, 2, execute_mcor_init);
 	debug_console_register_command(machine, "mcor_send",  CMDFLAG_NONE, 0, 1, MAX_COMMAND_PARAMS, execute_mcor_send);
   debug_console_register_command(machine, "mcor_dumpscores", CMDFLAG_NONE, 0, 0, 1, execute_mcor_dumpscores);
 
