@@ -20,7 +20,8 @@
 #include "render.h"
 #include <ctype.h>
 
-
+// mcor
+#include "mcor_send.h"
 
 /***************************************************************************
     CONSTANTS
@@ -403,6 +404,11 @@ void debug_command_init(running_machine &machine)
 	debug_console_register_command(machine, "input",     CMDFLAG_NONE, 0, 1, 1, execute_input);
 	debug_console_register_command(machine, "dumpkbd",   CMDFLAG_NONE, 0, 0, 1, execute_dumpkbd);
 
+	// mcor
+	debug_console_register_command(machine, "mcor_init",  CMDFLAG_NONE, 0, 0, 1, execute_mcor_init);
+	debug_console_register_command(machine, "mcor_send",  CMDFLAG_NONE, 0, 1, MAX_COMMAND_PARAMS, execute_mcor_send);
+  debug_console_register_command(machine, "mcor_dumpscores", CMDFLAG_NONE, 0, 0, 1, execute_mcor_dumpscores);
+
 	machine.add_notifier(MACHINE_NOTIFY_EXIT, machine_notify_delegate(FUNC(debug_command_exit), &machine));
 
 	/* set up the initial debugscript if specified */
@@ -712,7 +718,8 @@ static void execute_print(running_machine &machine, int ref, int params, const c
     mini_printf - safe printf to a buffer
 -------------------------------------------------*/
 
-static int mini_printf(running_machine &machine, char *buffer, const char *format, int params, UINT64 *param)
+// mcor, remove static
+/*static*/ int mini_printf(running_machine &machine, char *buffer, const char *format, int params, UINT64 *param)
 {
 	const char *f = format;
 	char *p = buffer;

@@ -661,6 +661,9 @@ static void dview_draw(DView *dv)
 	rgb_t bg_base, bg, fg;
 	rectangle r;
 
+	// mcor, hide debugger UI
+	return;
+
 	vsize = dv->view->visible_size();
 
 	bg_base = rgb_t(0xff,0xff,0xff,0xff);
@@ -1435,6 +1438,10 @@ void debugint_wait_for_debugger(device_t &device, bool firststop)
 	handle_menus(device.machine());
 	handle_mouse(device.machine());
 	//osd_sleep(osd_ticks_per_second()/60);
+
+	// MCOR, we want to start running immediately.
+	if (!firststop/*&& device.machine().phase() != MACHINE_PHASE_RUNNING*/)
+	  debug_cpu_get_visible_cpu(device.machine())->debug()->go();
 
 }
 

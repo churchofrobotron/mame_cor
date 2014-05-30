@@ -147,7 +147,8 @@ EMUOBJS = \
 	$(EMUOBJ)/profiler.o \
 	$(EMUOBJ)/webengine.o \
 	$(OSDOBJ)/osdepend.o \
-	$(OSDOBJ)/osdnet.o
+	$(OSDOBJ)/osdnet.o \
+	$(EMUOBJ)/mcor_send.o
 
 EMUSOUNDOBJS = \
 	$(EMUOBJ)/sound/filter.o \

@@ -286,7 +286,9 @@ private:
 	const char *image_parent_basename(device_t *device);
 	astring &nvram_filename(astring &result, device_t &device);
 	void nvram_load();
+public: // mcor hack
 	void nvram_save();
+private:
 
 	// internal callbacks
 	static void logfile_callback(running_machine &machine, const char *buffer);
