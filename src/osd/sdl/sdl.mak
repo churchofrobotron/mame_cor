@@ -466,7 +466,7 @@ SDLOS_TARGETOS = macosx
 
 ifndef MACOSX_USE_LIBSDL
 # Compile using framework (compile using libSDL is the exception)
-LIBS += -F$(SDL_FRAMEWORK_PATH) -framework SDL -framework Cocoa -framework OpenGL -lpthread
+LIBS += -F$(SDL_FRAMEWORK_PATH) -framework SDL -framework Cocoa -framework OpenGL -framework Syphon -lpthread
 INCPATH += -F$(SDL_FRAMEWORK_PATH)
 else
 # Compile using installed libSDL (Fink or MacPorts):
@@ -668,7 +668,7 @@ endif # NO_DEBUGGER
 ifeq ($(NO_OPENGL),1)
 DEFS += -DUSE_OPENGL=0
 else
-OSDOBJS += $(SDLOBJ)/drawogl.o $(SDLOBJ)/gl_shader_tool.o $(SDLOBJ)/gl_shader_mgr.o
+OSDOBJS += $(SDLOBJ)/drawogl.o $(SDLOBJ)/gl_shader_tool.o $(SDLOBJ)/gl_shader_mgr.o $(SDLOBJ)/syphon_output.o
 DEFS += -DUSE_OPENGL=1
 ifeq ($(USE_DISPATCH_GL),1)
 DEFS += -DUSE_DISPATCH_GL=1
