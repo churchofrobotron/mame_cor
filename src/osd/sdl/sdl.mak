@@ -668,7 +668,10 @@ endif # NO_DEBUGGER
 ifeq ($(NO_OPENGL),1)
 DEFS += -DUSE_OPENGL=0
 else
-OSDOBJS += $(SDLOBJ)/drawogl.o $(SDLOBJ)/gl_shader_tool.o $(SDLOBJ)/gl_shader_mgr.o $(SDLOBJ)/syphon_output.o
+OSDOBJS += $(SDLOBJ)/drawogl.o $(SDLOBJ)/gl_shader_tool.o $(SDLOBJ)/gl_shader_mgr.o
+ifeq ($(TARGETOS),macosx)
+OSDOBJS += $(SDLOBJ)/syphon_output.o
+endif
 DEFS += -DUSE_OPENGL=1
 ifeq ($(USE_DISPATCH_GL),1)
 DEFS += -DUSE_DISPATCH_GL=1

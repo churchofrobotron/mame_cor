@@ -34,18 +34,20 @@
 #include "gl_shader_tool.h"
 #include "gl_shader_mgr.h"
 
+#if defined(SDLMAME_MACOSX)
+
 #define ENABLE_SYPHON 1
 #ifdef ENABLE_SYPHON
 #include "syphon_output.h"
 #endif
 
-#if defined(SDLMAME_MACOSX)
 #ifndef APIENTRY
 #define APIENTRY
 #endif
 #ifndef APIENTRYP
 #define APIENTRYP APIENTRY *
 #endif
+
 
 typedef void (APIENTRYP PFNGLGENBUFFERSPROC) (GLsizei n, GLuint *buffers);
 typedef void (APIENTRYP PFNGLBINDBUFFERPROC) (GLenum, GLuint);
@@ -1142,11 +1144,12 @@ static int drawogl_window_draw(sdl_window_info *window, UINT32 dc, int update)
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
+#ifdef ENABLE_SYPHON
 		if (init_syphon_output())
 			mame_printf_verbose("Syphon init ok!");
 		else
 			mame_printf_verbose("Syphon init fail!");
+#endif
 	}
 
 	// figure out if we're vector
@@ -1575,9 +1578,9 @@ static void drawogl_window_destroy(sdl_window_info *window)
 	// skip if nothing
 	if (sdl == NULL)
 		return;
-
+#ifdef ENABLE_SYPHON
 	cleanup_syphon_output();
-
+#endif
 	// free the memory in the window
 
 	drawogl_destroy_all_textures(window);
